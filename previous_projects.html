@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过往项目 - 贾茗惠作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gallery-img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        .modal-overlay {
+            animation: fadeIn 0.2s ease;
+        }
+        .modal-content {
+            animation: scaleIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-500">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center">
+                    <span class="text-white font-semibold text-sm">J</span>
+                </div>
+                <span class="font-semibold text-lg">作品集</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">个人信息</a>
+                <a href="sales_category_chart.html" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">数据分析可视化</a>
+                <a href="2026年1-4月房地产分析报告.html" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">文档可视化</a>
+                <a href="https://siebel-jia.github.io/figma/" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Figma前端页面</a>
+                <a href="wechat_miniprogram.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">微信小程序</a>
+                <a href="previous_projects.html" class="text-sm font-medium text-primary-600 dark:text-primary-400">过往项目</a>
+                <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="pt-24 pb-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- 页面标题 -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">过往项目</h1>
+                <p class="text-gray-500 dark:text-gray-400">展示过往项目经验和作品集</p>
+            </div>
+
+            <!-- 项目分类展示 -->
+            <div class="space-y-12">
+                <!-- 销售周报项目 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold">销售周报</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">数据可视化报表系统</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                        基于企业销售数据构建的周报报表系统，支持多维度数据筛选、可视化图表展示、自动生成周报文档。帮助管理层快速掌握销售趋势，提升决策效率。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/销售周报000.png" alt="销售周报000" class="w-full h-48 object-cover" onclick="openLightbox('图片/销售周报000.png', '销售周报')">
+                        </div>
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/销售周报001.png" alt="销售周报001" class="w-full h-48 object-cover" onclick="openLightbox('图片/销售周报001.png', '销售周报')">
+                        </div>
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/销售周报002.png" alt="销售周报002" class="w-full h-48 object-cover" onclick="openLightbox('图片/销售周报002.png', '销售周报')">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 知识产权项目 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold">知识产权</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">知识产权管理平台</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                        面向企业的知识产权全生命周期管理平台，涵盖商标、专利、版权等知识产权类型的申请、维护、监控和分析功能，助力企业构建知识产权保护体系。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/知识产权001.png" alt="知识产权001" class="w-full h-56 object-cover" onclick="openLightbox('图片/知识产权001.png', '知识产权')">
+                        </div>
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/知识产权002.png" alt="知识产权002" class="w-full h-56 object-cover" onclick="openLightbox('图片/知识产权002.png', '知识产权')">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目管理项目 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold">项目管理</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">企业级项目管理系统</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                        支持敏捷开发和传统瀑布模式的企业级项目管理系统，包含任务管理、进度追踪、团队协作、文档管理等核心功能，满足企业复杂项目管理需求。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/项目管理000.png" alt="项目管理000" class="w-full h-56 object-cover" onclick="openLightbox('图片/项目管理000.png', '项目管理')">
+                        </div>
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/项目管理002.png" alt="项目管理002" class="w-full h-56 object-cover" onclick="openLightbox('图片/项目管理002.png', '项目管理')">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 店铺管理项目 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold">店铺管理</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">电商店铺管理后台</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                        面向电商商家的店铺管理后台系统，提供商品管理、订单处理、库存管理、营销活动配置等核心功能，帮助商家高效运营线上店铺。
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/店铺管理001.png" alt="店铺管理001" class="w-full h-64 object-cover" onclick="openLightbox('图片/店铺管理001.png', '店铺管理')">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 智能制造项目 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold">智能制造</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">工业智能制造平台</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                        面向制造业的智能生产管理平台，集成设备监控、生产调度、质量检测、数据分析等功能，助力企业实现生产流程数字化和智能化升级。
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="gallery-img bg-gray-100 dark:bg-gray-600 rounded-xl overflow-hidden">
+                            <img src="图片/智能制造001.png" alt="智能制造001" class="w-full h-64 object-cover" onclick="openLightbox('图片/智能制造001.png', '智能制造')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="border-t border-gray-200 dark:border-gray-600 py-8 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400 dark:text-gray-500 text-sm">贾茗惠 · 产品经理作品集</p>
+            <p class="text-gray-400 dark:text-gray-500 text-xs mt-2">版权声明：本文档为个人学习作品集，未经允许请勿转载。</p>
+        </div>
+    </footer>
+
+    <!-- 图片查看器模态框 -->
+    <div id="lightbox" class="modal-overlay fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden" onclick="closeLightbox()">
+        <button id="closeBtn" class="absolute top-6 right-6 p-2 text-white hover:bg-white/20 rounded-full transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <button id="prevBtn" class="absolute left-6 p-3 text-white hover:bg-white/20 rounded-full transition-colors" onclick="event.stopPropagation(); changeImage(-1)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button id="nextBtn" class="absolute right-6 p-3 text-white hover:bg-white/20 rounded-full transition-colors" onclick="event.stopPropagation(); changeImage(1)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+        <div class="modal-content max-w-4xl max-h-[80vh] mx-4">
+            <img id="lightboxImage" src="" alt="" class="w-full h-full object-contain rounded-lg">
+            <p id="lightboxTitle" class="text-white text-center mt-4 text-lg"></p>
+            <p id="lightboxCounter" class="text-gray-400 text-center text-sm mt-1"></p>
+        </div>
+    </div>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+        });
+
+        // 图片查看器
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        const closeBtn = document.getElementById('closeBtn');
+        
+        let currentImages = [];
+        let currentIndex = 0;
+        
+        const projectImages = {
+            '销售周报': ['图片/销售周报000.png', '图片/销售周报001.png', '图片/销售周报002.png'],
+            '知识产权': ['图片/知识产权001.png', '图片/知识产权002.png'],
+            '项目管理': ['图片/项目管理000.png', '图片/项目管理002.png'],
+            '店铺管理': ['图片/店铺管理001.png'],
+            '智能制造': ['图片/智能制造001.png']
+        };
+        
+        function openLightbox(imageSrc, projectName) {
+            currentImages = projectImages[projectName] || [];
+            currentIndex = currentImages.indexOf(imageSrc);
+            if (currentIndex === -1) currentIndex = 0;
+            
+            lightboxImage.src = imageSrc;
+            lightboxTitle.textContent = projectName;
+            updateCounter();
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            
+            lightboxImage.src = currentImages[currentIndex];
+            updateCounter();
+        }
+        
+        function updateCounter() {
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+        
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+    </script>
+</body>
+</html>
