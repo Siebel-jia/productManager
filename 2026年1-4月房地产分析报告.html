@@ -408,13 +408,6 @@
         } else {
             document.documentElement.classList.remove('dark');
         }
-
-        // 主题切换按钮
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
     </script>
 </body>
 </html>
