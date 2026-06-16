@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏联动测试</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .test-card {
+            transition: all 0.3s ease;
+        }
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .status-pass {
+            color: #10b981;
+            background: #d1fae5;
+        }
+        .status-fail {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-500">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center">
+                    <span class="text-white font-semibold text-sm">J</span>
+                </div>
+                <span class="font-semibold text-lg">作品集</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="nav-link text-sm font-medium text-primary-600 dark:text-primary-400" data-page="index">首页</a>
+                <a href="sales_category_chart.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="sales">数据分析可视化</a>
+                <a href="2026年1-4月房地产分析报告.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="report">文档可视化</a>
+                <a href="figma.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="figma">Figma前端页面</a>
+                <a href="previous_projects.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="projects">过往项目</a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        (function() {
+            var currentPage = window.location.pathname.split('/').pop();
+            if (currentPage === '' || currentPage === 'index.html') {
+                currentPage = 'index';
+            } else if (currentPage === 'sales_category_chart.html') {
+                currentPage = 'sales';
+            } else if (currentPage === '2026年1-4月房地产分析报告.html') {
+                currentPage = 'report';
+            } else if (currentPage === 'previous_projects.html') {
+                currentPage = 'projects';
+            } else if (currentPage.includes('figma')) {
+                currentPage = 'figma';
+            }
+            
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                var page = link.getAttribute('data-page');
+                if (page === currentPage) {
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-medium');
+                    link.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+                }
+            });
+        })();
+    </script>
+
+    <!-- 测试主内容 -->
+    <main class="pt-24 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- 测试标题 -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">导航栏联动测试</h1>
+                <p class="text-gray-600 dark:text-gray-400">点击下方按钮模拟页面切换，验证导航栏标签颜色联动效果</p>
+            </div>
+
+            <!-- 测试控制面板 -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <span class="w-1 h-6 bg-primary-500 rounded-full mr-3"></span>
+                    页面切换模拟
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <button onclick="simulatePage('index')" class="test-card bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all">
+                        <div class="text-lg mb-1">首页</div>
+                        <div class="text-sm opacity-80">index.html</div>
+                    </button>
+                    <button onclick="simulatePage('sales')" class="test-card bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-xl font-medium hover:from-green-600 hover:to-green-700 transition-all">
+                        <div class="text-lg mb-1">数据分析可视化</div>
+                        <div class="text-sm opacity-80">sales_category_chart.html</div>
+                    </button>
+                    <button onclick="simulatePage('report')" class="test-card bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-xl font-medium hover:from-purple-600 hover:to-purple-700 transition-all">
+                        <div class="text-lg mb-1">文档可视化</div>
+                        <div class="text-sm opacity-80">2026年1-4月房地产分析报告.html</div>
+                    </button>
+                    <button onclick="simulatePage('figma')" class="test-card bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-xl font-medium hover:from-orange-600 hover:to-orange-700 transition-all">
+                        <div class="text-lg mb-1">Figma前端页面</div>
+                        <div class="text-sm opacity-80">外部链接</div>
+                    </button>
+                    <button onclick="simulatePage('projects')" class="test-card bg-gradient-to-r from-pink-500 to-pink-600 text-white p-4 rounded-xl font-medium hover:from-pink-600 hover:to-pink-700 transition-all">
+                        <div class="text-lg mb-1">过往项目</div>
+                        <div class="text-sm opacity-80">previous_projects.html</div>
+                    </button>
+                    <button onclick="resetTest()" class="test-card bg-gradient-to-r from-gray-500 to-gray-600 text-white p-4 rounded-xl font-medium hover:from-gray-600 hover:to-gray-700 transition-all">
+                        <div class="text-lg mb-1">重置测试</div>
+                        <div class="text-sm opacity-80">恢复初始状态</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 测试结果 -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <span class="w-1 h-6 bg-primary-500 rounded-full mr-3"></span>
+                    测试结果
+                </h2>
+                <div id="testResults" class="space-y-3">
+                    <div class="text-center text-gray-500 dark:text-gray-400 py-8">
+                        点击上方按钮开始测试
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导航栏状态实时显示 -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 mt-8">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <span class="w-1 h-6 bg-primary-500 rounded-full mr-3"></span>
+                    导航栏状态实时显示
+                </h2>
+                <div id="navStatus" class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <div class="nav-status-item bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg text-center">
+                        <div class="text-sm font-medium mb-1">首页</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" id="status-index">未激活</div>
+                    </div>
+                    <div class="nav-status-item bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg text-center">
+                        <div class="text-sm font-medium mb-1">数据分析</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" id="status-sales">未激活</div>
+                    </div>
+                    <div class="nav-status-item bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg text-center">
+                        <div class="text-sm font-medium mb-1">文档可视化</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" id="status-report">未激活</div>
+                    </div>
+                    <div class="nav-status-item bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg text-center">
+                        <div class="text-sm font-medium mb-1">Figma</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" id="status-figma">未激活</div>
+                    </div>
+                    <div class="nav-status-item bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg text-center">
+                        <div class="text-sm font-medium mb-1">过往项目</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" id="status-projects">未激活</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function simulatePage(page) {
+            var testResults = document.getElementById('testResults');
+            var results = [];
+            var passed = 0;
+            var failed = 0;
+
+            // 重置所有导航链接样式
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-medium');
+                link.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+            });
+
+            // 模拟当前页面
+            var currentPage = page;
+            
+            // 应用导航栏联动逻辑
+            navLinks.forEach(function(link) {
+                var linkPage = link.getAttribute('data-page');
+                if (linkPage === currentPage) {
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-medium');
+                    link.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+                }
+            });
+
+            // 更新实时状态显示
+            document.getElementById('status-index').textContent = '未激活';
+            document.getElementById('status-index').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-sales').textContent = '未激活';
+            document.getElementById('status-sales').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-report').textContent = '未激活';
+            document.getElementById('status-report').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-figma').textContent = '未激活';
+            document.getElementById('status-figma').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-projects').textContent = '未激活';
+            document.getElementById('status-projects').className = 'text-xs text-gray-500 dark:text-gray-400';
+
+            var statusElement = document.getElementById('status-' + currentPage);
+            if (statusElement) {
+                statusElement.textContent = '已激活';
+                statusElement.className = 'text-xs text-green-600 dark:text-green-400 font-medium';
+            }
+
+            // 验证每个导航链接的状态
+            var pageNames = {
+                'index': '首页',
+                'sales': '数据分析可视化',
+                'report': '文档可视化',
+                'figma': 'Figma前端页面',
+                'projects': '过往项目'
+            };
+
+            navLinks.forEach(function(link) {
+                var linkPage = link.getAttribute('data-page');
+                var isActive = link.classList.contains('text-primary-600');
+                var shouldBeActive = (linkPage === currentPage);
+                
+                var testName = pageNames[linkPage] || linkPage;
+                var status, statusClass;
+                
+                if (isActive === shouldBeActive) {
+                    status = '✓ 通过';
+                    statusClass = 'status-pass';
+                    passed++;
+                } else {
+                    status = '✗ 失败';
+                    statusClass = 'status-fail';
+                    failed++;
+                }
+                
+                results.push({
+                    name: testName,
+                    expected: shouldBeActive ? '应激活' : '应未激活',
+                    actual: isActive ? '已激活' : '未激活',
+                    status: status,
+                    statusClass: statusClass
+                });
+            });
+
+            // 显示测试结果
+            var resultsHTML = '<div class="space-y-3">';
+            results.forEach(function(result) {
+                resultsHTML += `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                        <div class="flex-1">
+                            <div class="font-medium">${result.name}</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">
+                                期望: ${result.expected} | 实际: ${result.actual}
+                            </div>
+                        </div>
+                        <div class="px-3 py-1 rounded-full text-sm font-medium ${result.statusClass}">
+                            ${result.status}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsHTML += `
+                <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800">
+                    <div class="flex items-center justify-between">
+                        <div class="font-medium">测试总结</div>
+                        <div class="text-sm">
+                            通过: <span class="text-green-600 font-medium">${passed}</span> | 
+                            失败: <span class="text-red-600 font-medium">${failed}</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                        当前模拟页面: <span class="font-medium text-primary-600">${pageNames[currentPage]}</span>
+                    </div>
+                </div>
+            </div>`;
+            
+            testResults.innerHTML = resultsHTML;
+        }
+
+        function resetTest() {
+            var testResults = document.getElementById('testResults');
+            testResults.innerHTML = `
+                <div class="text-center text-gray-500 dark:text-gray-400 py-8">
+                    测试已重置，请点击上方按钮开始新的测试
+                </div>
+            `;
+
+            // 重置导航链接样式
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-medium');
+                link.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+            });
+
+            // 重置状态显示
+            document.getElementById('status-index').textContent = '未激活';
+            document.getElementById('status-index').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-sales').textContent = '未激活';
+            document.getElementById('status-sales').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-report').textContent = '未激活';
+            document.getElementById('status-report').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-figma').textContent = '未激活';
+            document.getElementById('status-figma').className = 'text-xs text-gray-500 dark:text-gray-400';
+            document.getElementById('status-projects').textContent = '未激活';
+            document.getElementById('status-projects').className = 'text-xs text-gray-500 dark:text-gray-400';
+        }
+
+        // 初始化
+        window.onload = function() {
+            console.log('导航栏联动测试页面已加载');
+        };
+    </script>
+</body>
+</html>

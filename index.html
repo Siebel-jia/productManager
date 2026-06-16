@@ -54,7 +54,7 @@
 <body class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-colors duration-300">
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-500">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center">
                     <span class="text-white font-semibold text-sm">J</span>
@@ -62,14 +62,39 @@
                 <span class="font-semibold text-lg">作品集</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="#" class="text-sm font-medium text-primary-600 dark:text-primary-400">个人信息</a>
-                <a href="sales_category_chart.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">数据分析可视化</a>
-                <a href="2026年1-4月房地产分析报告.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">文档可视化</a>
-                <a href="https://siebel-jia.github.io/figma/" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Figma前端页面</a>
-                <a href="previous_projects.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">过往项目</a>
+                <a href="index.html" class="nav-link text-sm font-medium text-blue-600 dark:text-blue-400" data-page="index">首页</a>
+                <a href="sales_category_chart.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="sales">数据分析可视化</a>
+                <a href="2026年1-4月房地产分析报告.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="report">文档可视化</a>
+                <a href="figma.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="figma">Figma前端页面</a>
+                <a href="previous_projects.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="projects">过往项目</a>
             </div>
         </div>
     </nav>
+    <script>
+        (function() {
+            var currentPage = window.location.pathname.split('/').pop();
+            if (currentPage === '' || currentPage === 'index.html') {
+                currentPage = 'index';
+            } else if (currentPage === 'sales_category_chart.html') {
+                currentPage = 'sales';
+            } else if (currentPage === '2026年1-4月房地产分析报告.html') {
+                currentPage = 'report';
+            } else if (currentPage === 'previous_projects.html') {
+                currentPage = 'projects';
+            } else if (currentPage.includes('figma')) {
+                currentPage = 'figma';
+            }
+            
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                var page = link.getAttribute('data-page');
+                if (page === currentPage) {
+                    link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-medium');
+                    link.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+                }
+            });
+        })();
+    </script>
 
     <!-- 主内容区 -->
     <main class="pt-24 pb-16 px-6">
@@ -119,7 +144,7 @@
                         <span id="email-text">点击查看邮箱</span>
                     </button>
                     <!-- 简历下载 -->
-                    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium transition-colors">
+                    <a href="贾茗惠简历.pdf" download="贾茗惠简历.pdf" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
@@ -219,7 +244,7 @@
                     <div class="p-4 rounded-xl bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800">
                         <div class="flex flex-wrap items-center gap-4 text-sm">
                             <span class="text-gray-600 dark:text-gray-300">求职期望：</span>
-                            <span class="font-medium text-primary-700 dark:text-primary-400">产品经理</span>
+                            <span class="font-medium text-primary-700 dark:text-primary-400">产品经理/需求分析师/解决方案经理</span>
                             <span class="text-gray-600 dark:text-gray-300">|</span>
                             <span class="font-medium">上海</span>
                             <span class="text-gray-600 dark:text-gray-300">|</span>
@@ -229,11 +254,11 @@
                 </div>
             </section>
 
-            <!-- 作品展示 -->
+            <!-- AI Coding 作品展示 -->
             <section id="projects" class="mb-16">
                 <h2 class="text-2xl font-semibold mb-6 flex items-center">
                     <span class="w-1 h-6 bg-primary-500 rounded-full mr-3"></span>
-                    作品展示
+                    AI Coding 作品展示
                 </h2>
                 <div class="space-y-6">
                     <!-- 项目1：数据分析可视化 -->

@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>过往项目 - 贾茗惠作品集</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -51,14 +74,39 @@
                 <span class="font-semibold text-lg">作品集</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="index.html" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">个人信息</a>
-                <a href="sales_category_chart.html" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">数据分析可视化</a>
-                <a href="2026年1-4月房地产分析报告.html" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">文档可视化</a>
-                <a href="https://siebel-jia.github.io/figma/" target="_blank" class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Figma前端页面</a>
-                <a href="previous_projects.html" class="text-sm font-medium text-primary-600 dark:text-primary-400">过往项目</a>
+                <a href="index.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="index">首页</a>
+                <a href="sales_category_chart.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="sales">数据分析可视化</a>
+                <a href="2026年1-4月房地产分析报告.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="report">文档可视化</a>
+                <a href="figma.html" class="nav-link text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-page="figma">Figma前端页面</a>
+                <a href="previous_projects.html" class="nav-link text-sm font-medium text-blue-600 dark:text-blue-400" data-page="projects">过往项目</a>
             </div>
         </div>
     </nav>
+    <script>
+        (function() {
+            var currentPage = window.location.pathname.split('/').pop();
+            if (currentPage === '' || currentPage === 'index.html') {
+                currentPage = 'index';
+            } else if (currentPage === 'sales_category_chart.html') {
+                currentPage = 'sales';
+            } else if (currentPage === '2026年1-4月房地产分析报告.html') {
+                currentPage = 'report';
+            } else if (currentPage === 'previous_projects.html') {
+                currentPage = 'projects';
+            } else if (currentPage.includes('figma')) {
+                currentPage = 'figma';
+            }
+            
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                var page = link.getAttribute('data-page');
+                if (page === currentPage) {
+                    link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-medium');
+                    link.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-primary-600', 'dark:hover:text-primary-400');
+                }
+            });
+        })();
+    </script>
 
     <!-- 主内容区 -->
     <main class="pt-24 pb-16 px-6">
